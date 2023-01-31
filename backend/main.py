@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from database import fetch_one_todo, fetch_all_todos, create_todo, update_todo, remove_todo
-from model import ToDo
+from model import Todo
 
 
 
@@ -29,15 +29,15 @@ async def get_todo():
     return response
 
 
-@app.post('/api/todo', response_model=ToDo)
-async def post_todo(todo: ToDo):
+@app.post('/api/todo', response_model=Todo)
+async def post_todo(todo: Todo):
     response = await create_todo(todo)
     if response:
         return response
     raise HTTPException(status_code=404, detail="Bad Request")
 
 
-@app.get('api/todo/{title}', response_model=ToDo)
+@app.get('api/todo/{title}', response_model=Todo)
 async def get_todo_by_id(title):
     response = await fetch_one_todo(title)
     if response:
@@ -45,7 +45,7 @@ async def get_todo_by_id(title):
     raise HTTPException(status_code=404, detail="Todo not found")
 
 
-@app.put('/api/todo/{title}', response_model=ToDo)
+@app.put('/api/todo/{title}', response_model=Todo)
 async def update_todo_by_id(title:str, data:str):
     response = await update_todo(title, data)
     if response:
