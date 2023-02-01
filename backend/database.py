@@ -1,7 +1,7 @@
 from model import Todo
 import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017")
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://dbUser:dbUserPassword@cluster0.8yz6ppy.mongodb.net/?retryWrites=true&w=majority")
 
 database = client.ToDoList
 collection = database.get_collection("todos_collection")
@@ -35,10 +35,6 @@ async def update_todo(title: str, desc: Todo):
 async def remove_todo(title: str):
     await collection.delete_one({"title": title})
     return True
-
-
-
-
 
 
 
