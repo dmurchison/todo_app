@@ -14,7 +14,7 @@ function App() {
 
   // Read all tasks
   useEffect(() => {
-    axios.get('http://localhost:8000/api/tasks')
+    axios.get('http://localhost:8000/api/todo')
     .then(res => {
       setTodoList(res.data);
     })
@@ -22,7 +22,7 @@ function App() {
 
 
   const addToHandler = () => {
-    axios.post('http://localhost:8000/api/tasks', {
+    axios.post('http://localhost:8000/api/todo', {
       title: title,
       description: desc
     })

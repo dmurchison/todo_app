@@ -12,12 +12,14 @@ function TodoItem(props) {
         <span style={{fontWeight: 'bold, underline'}}>
           {props.todo.title} :
         </span>
-        {props.todo.description}
-        <button onClick={() => deleteTodoHandler(props.todo.title)} className='btn btn-outline-danger my-2 mx-2' style={{'borderRadius':'50px', 'font-weight':'bold'}}>Delete X</button>
+        <span>
+          {props.todo.description}
+        </span>
+        <button onClick={() => deleteTodoHandler(props.todo.title)} className='btn btn-outline-danger my-2 mx-2' style={{'borderRadius':'50px', 'font-weight':'bold'}}>Delete</button>
         <hr />
       </p>
     </div>
-  )
+  );
 }
 
 export default TodoItem;
